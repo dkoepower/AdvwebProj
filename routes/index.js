@@ -6,7 +6,7 @@ exports.index = function (req, res) {
     var select = "select * from tasks where completed = 0";
     sql.query(conn, select, function (err, items) {
         if (err)
-            throw err;
+            res.render(err);
         res.render('index', { title: 'My ToDo List ', tasks: items });
     });
 };
