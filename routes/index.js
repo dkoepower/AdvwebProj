@@ -1,10 +1,6 @@
 ﻿
-var sql = require('node-sqlserver-unofficial')
-    , nconf = require('nconf');
-
-nconf.env()
-     .file({ file: 'config.json' });
-var conn = nconf.get("SQL_CONN");
+var sql = require('node-sqlserver-unofficial');
+var conn = "Driver={SQL Server Native Client 11.0};Server=tcp:pizgjft6r5.database.windows.net,1433;Database=AdvancedWebProgramming_DB;Uid=Advanced@pizgjft6r5;Pwd=Rhrmqdnpq1;Encrypt=yes;Connection Timeout=30;";
 
 exports.index = function (req, res) {
     var select = "select * from tasks where completed = 0";
