@@ -11,6 +11,7 @@
     "express": "3.4.4",
     "jade": "*",
     "nconf": "^0.6.9",
-    "stylus": "*"
+    "stylus": "*",
+    "node-sqlserver-unofficial":  "*"
   }
 }
