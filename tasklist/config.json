@@ -1,4 +1,0 @@
-﻿{
-  "SQL_CONN" : "Driver={SQL Server Native Client 11.0};Server=tcp:pizgjft6r5.database.windows.net,1433;Database=AdvancedWebProgramming_DB;Uid=Advanced@pizgjft6r5.database.windows.net;Pwd=Rhrmqdnpq1; Encrypt=yes; Connection Timeout=30;"
-
-}
