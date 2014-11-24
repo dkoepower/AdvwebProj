@@ -22,7 +22,9 @@ exports.updateItem = function (req, res) {
         });
     } else {
         var completed = req.body.completed;
-        if (!completed.forEach)
+        if (!completed)
+            res.redirect('/');
+        if (!completed.forEach) 
             completed = [completed];
         var update = "update tasks set completed = 1 where id in (" + completed.join(",") + ")";
         sql.query(conn, update, function (err) {
