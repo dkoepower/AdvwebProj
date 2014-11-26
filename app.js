@@ -8,8 +8,8 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-
 var app = express();
+var fs = require('fs');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -24,6 +24,9 @@ app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
 // development only
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
@@ -31,6 +34,19 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.post('/', routes.updateItem);
+app.all('/main/playStage.html', function (req, res) {
+    var nstype = req.param('nstype');
+    //res.send('<h1>' + nstype + '</h1>');
+    fs.readFile('./routes/stageInterface2.js', 'utf8', function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        res.send(data);
+    });
+    //res.redirect('/routes/stageInterface2.js');
+    //routes.StageInterface2;
+});
+    
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
