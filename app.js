@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('stylus').middleware(path.join(__dirname, 'public1')));
+app.use(express.static(path.join(__dirname, 'public1')));
 
 
 
@@ -35,7 +35,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/', routes.updateItem);
 app.all('/main/playstage.html', routes.selectStage);
-    
+app.all('/registerUser.do', routes.registerUser);
+app.all('/finishStage.do', routes.finishStage);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
