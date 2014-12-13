@@ -34,3 +34,20 @@ exports.updateItem = function (req, res) {
         });
     }
 }
+
+exports.selectStage = function (req, res) {
+    var nstype = Number(req.param('nstype')) + 1;
+       
+    var select = "select s_script from stagesource where s_index = ?";
+       sql.query(conn, select,[nstype], function(err, result, fields) {
+            if (err)
+            throw err;
+                var script = result[0].s_script;
+            res.send(script);
+            });
+}
+
+exports.updateRanking = function (req, res) {
+    var user = req.param('user');
+    var stage = req.param('stage');
+}
