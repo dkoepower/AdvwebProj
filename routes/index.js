@@ -59,7 +59,6 @@ exports.registerUser = function (req, res) {
             else
                 throw err;
         }
-        res.send(result);
     });
 }
 
@@ -73,7 +72,6 @@ exports.finishStage = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send(result);
     });
 
     var updateRanking = "Update stagesource set s_u_name = ?, s_record = ?, s_recordDate = SWITCHOFFSET(SYSDATETIMEOFFSET(),9*60) where s_index = ? and s_record > ?";
@@ -81,7 +79,6 @@ exports.finishStage = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send(result);
     });
 
 }
