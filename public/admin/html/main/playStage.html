@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hell of Golf.</title>
+		<link rel="shortcut icon" href="../../../res/img/favicon.ico">
+		<link rel="stylesheet" href="../../common_css.css">
+		<link rel="stylesheet" href="../../css/main/play-stage-style.css">
+		<script src="../../js/external/jquery/jquery.js"></script>
+		<script src="../../js/jquery-1.11.1.min.js"></script>
+		<script src="../../common_js.js"></script>
+		<script src="../../js/easeljs-0.7.1.min.js"></script>
+		<script src="../../js/Box2dWeb-2.1.a.3.min.js"></script>
+		<!-- <script src="../../js/main/stage-interface.js"></script>
+		<script src="../../js/main/StageInterfaceImp.js"></script> -->
+		<script src="../../js/main/StageInterface.js"></script>
+		<script src="../../js/main/StageInterface2.js"></script>
+		<script src="../../js/main/StageInterface3.js"></script>
+		<script src="../../js/main/StageInterface4.js"></script>
+		<script src="../../js/main/StageInterface5.js"></script>
+		<script src="../../js/main/StageInterface6.js"></script>
+		<script src="../../js/main/StageInterface7.js"></script>
+		<script src="../../js/main/StageInterface8.js"></script>
+		<script src="../../js/main/DragController.js"></script>
+		<script src="../../js/main/Controllers.js"></script>
+		<script src="../../js/main/play-stage-script.js"></script>
+		<script src="../../js/preloadjs-0.4.0.min.js"></script>
+	</head>
+	<body>
+		<div id="loading_wrapper">
+			<audio id="zik" src="../../../res/snd/ultranoir.ogg" preload="auto">
+				
+			</audio>
+			<div class="loaded-div"> </div>
+			
+		</div>
+		
+		<div id="page_wrapper" style="display:none;">
+			
+			<div id="background-container">
+				<div class="main">
+					
+				</div>
+				<!-- <div class="left-bottom" title="돌아가기">
+					
+				</div> -->
+			</div>
+			
+			<div id="sub_navigator_wrapper">
+				<nav id="submain_navigator">
+					
+				</nav>
+			</div>
+			
+			<div id="header_wrapper">
+			<header>
+				
+			</header>
+			</div>
+			
+			<div id="section_wrapper">
+				<section id="main_section">
+					<div class="contents-wrapper">
+						
+						<div class="gameview-container">
+							<div class="interface-btn-container">
+								<ul class="interface-group">
+									<li class="user-btn restart">다시</li>
+									<li class="user-btn pause">정지</li>
+									<li class="user-btn menu-exit">메뉴(종료)</li>
+								</ul>
+							</div>
+							<div class="canvas-container">
+								<canvas id="playcanvas" width="1000" height="644">
+									User Browser does not support canvas functions.
+									You would better upgrade your browser or use another one.
+								</canvas>
+								<canvas id="effect_canvas" width="1000" height="644">
+								</canvas>
+								<canvas id="playcanvas_debug" width="1000" height="644">
+								</canvas>
+							</div>
+						</div>
+						
+						<article class="message-box">
+							<div id="message_send_container">
+								<div class="container-wrapper">
+									<div class="box-title">
+									</div>
+									<div class="box-body">
+										<div class="contents-msg">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="image_send_container">
+								<div class="container_wrapper">
+									<div class="box-title">
+									</div>
+									<div class="box-body">
+										<div class="contents-msg">
+											<img class="img-contents">
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</section>
+			</div>
+			
+			<div id="footer_wrapper">
+				<footer>				
+					<div class="logo-positioner">
+						
+					</div>
+					<div class="sound-stopper">
+						
+					</div>
+					<div class="instruction-positioner">
+						골퍼 : 뒤로가기 &lt;단계 조회 : 마우스휠&gt;
+					</div>
+				</footer>
+			</div>		</div>
+	</body>
+</html>

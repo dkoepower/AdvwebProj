@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="real.png">
+   <SubTexture name="1" x="0" y="0" width="90" height="90" />
+   <SubTexture name="10" x="90" y="0" width="90" height="90" />
+   <SubTexture name="11" x="0" y="90" width="90" height="90" />
+   <SubTexture name="12" x="90" y="90" width="90" height="90" />
+   <SubTexture name="13" x="180" y="0" width="90" height="90" />
+   <SubTexture name="14" x="180" y="90" width="90" height="90" />
+   <SubTexture name="15" x="270" y="0" width="90" height="90" />
+   <SubTexture name="16" x="360" y="0" width="90" height="90" />
+   <SubTexture name="17" x="270" y="90" width="90" height="90" />
+   <SubTexture name="18" x="360" y="90" width="90" height="90" />
+   <SubTexture name="19" x="0" y="180" width="90" height="90" />
+   <SubTexture name="2" x="90" y="180" width="90" height="90" />
+   <SubTexture name="20" x="0" y="270" width="90" height="90" />
+   <SubTexture name="21" x="180" y="180" width="90" height="90" />
+   <SubTexture name="22" x="90" y="270" width="90" height="90" />
+   <SubTexture name="23" x="0" y="360" width="90" height="90" />
+   <SubTexture name="24" x="90" y="360" width="90" height="90" />
+   <SubTexture name="25" x="270" y="180" width="90" height="90" />
+   <SubTexture name="26" x="180" y="270" width="90" height="90" />
+   <SubTexture name="27" x="270" y="270" width="90" height="90" />
+   <SubTexture name="28" x="180" y="360" width="90" height="90" />
+   <SubTexture name="29" x="360" y="180" width="90" height="90" />
+   <SubTexture name="3" x="360" y="270" width="90" height="90" />
+   <SubTexture name="30" x="270" y="360" width="90" height="90" />
+   <SubTexture name="31" x="360" y="360" width="90" height="90" />
+   <SubTexture name="32" x="450" y="0" width="90" height="90" />
+   <SubTexture name="33" x="450" y="90" width="90" height="90" />
+   <SubTexture name="34" x="540" y="0" width="90" height="90" />
+   <SubTexture name="35" x="450" y="180" width="90" height="90" />
+   <SubTexture name="36" x="540" y="90" width="90" height="90" />
+   <SubTexture name="37" x="540" y="180" width="90" height="90" />
+   <SubTexture name="38" x="450" y="270" width="90" height="90" />
+   <SubTexture name="39" x="450" y="360" width="90" height="90" />
+   <SubTexture name="4" x="540" y="270" width="90" height="90" />
+   <SubTexture name="5" x="540" y="360" width="90" height="90" />
+   <SubTexture name="6" x="0" y="450" width="90" height="90" />
+   <SubTexture name="7" x="90" y="450" width="90" height="90" />
+   <SubTexture name="8" x="180" y="450" width="90" height="90" />
+   <SubTexture name="9" x="270" y="450" width="90" height="90" />
+</TextureAtlas>
