@@ -35,6 +35,7 @@ app.all('/', function (req, res) {
 app.all('/main/playstage.html', routes.selectStage);
 app.all('/registerUser.do', routes.registerUser);
 app.all('/finishStage.do', routes.finishStage);
+app.all('/ranking.do', routes.ranking);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
