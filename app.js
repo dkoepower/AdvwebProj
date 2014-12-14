@@ -9,6 +9,7 @@ var http = require('http');
 var path = require('path');
 var app = express();
 var fs = require('fs');
+var methodOverride = require('method-override');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -18,7 +19,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.methodOverride());
+app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static('public'));
 app.use(app.router);
 app.disable('etag');
@@ -28,7 +29,9 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-
+app.all('/', function (req, res) {
+    res.redirect('index.html');
+})
 app.all('/main/playstage.html', routes.selectStage);
 app.all('/registerUser.do', routes.registerUser);
 app.all('/finishStage.do', routes.finishStage);
