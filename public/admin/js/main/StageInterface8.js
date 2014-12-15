@@ -57,12 +57,12 @@ function StageInterface(object) {
 					window.endMilliSeconds = new Date().getTime();
 					$.ajax({
 						  url:'http://advancedwebprogramming.azurewebsites.net/ranking.do',
-						  method:'GET',
+						  type:'GET',
 						  success: function(data) { console.log(data);
 						  
 						    var output = '';
 						  	$.each(data, function(i, e, a){
-						  		output += i+' 순위 : ' + e.s_u_name +', time : ' + e.s_record + '\n';
+						  		output += (i+1)+' 단계 1등 : ' + e.s_u_name +', time : ' + e.s_record/1000 + '초\n';
 						  	});
 						  	
 						  	alert(output);
