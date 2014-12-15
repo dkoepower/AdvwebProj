@@ -195,7 +195,8 @@ CanvasInfoContainer.prototype.stageEventOn = function(){
 			
 			if(child){
 				child.graphics.clear()
-				.beginStroke('rgba(0,0,0,0.5)')
+				.setStrokeStyle(8,"round")
+				.beginStroke('rgba(250,250,0,0.5)')
 				//.drawRect(dcon.startX, dcon.startY, dcon.getWholeDeltaX(), dcon.getWholeDeltaY());
 				.moveTo(dcon.startX, dcon.startY)
 				.lineTo(dcon.startX + caninfo.maxXScale, dcon.startY + caninfo.maxYScale);

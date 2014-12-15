@@ -5,7 +5,7 @@
 *
 **/
 
-function s5() {
+function s4() {
 
 function StageInterface(object) {
 	this.startBallPos = new MPoint(canvasWidth-20,10);
@@ -59,7 +59,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -128,7 +128,7 @@ function StageInterface(object) {
 
 StageInterface.prototype.initStage = function(obj){
 	
-	window.setBackgroundURL('../../../res/img/back04.png');
+	window.setBackgroundURL('../../../res/img/back05.png');
 	
 	var fixDef = new box2d.b2FixtureDef();
 	fixDef.density = 1;
@@ -173,29 +173,29 @@ StageInterface.prototype.initStage = function(obj){
 	fixDef.friction = 0.4;
 	fixDef.shape = new box2d.b2PolygonShape();
 	var point = [
-	             new box2d.b2Vec2((canvasWidth*7/80) / SCALE, (50) / SCALE),
-	             new box2d.b2Vec2((canvasWidth) / SCALE, 50 / SCALE),
-	             new box2d.b2Vec2((canvasWidth) / SCALE, (100) / SCALE),
-	             new box2d.b2Vec2((canvasWidth*7/80) / SCALE, (100) / SCALE)
+	             new box2d.b2Vec2((0) / SCALE, (0) / SCALE),
+	             new box2d.b2Vec2((canvasWidth/4-40) / SCALE, 0 / SCALE),
+	             new box2d.b2Vec2((canvasWidth/4+70) / SCALE, (162) / SCALE),
+	             new box2d.b2Vec2((0) / SCALE, (280) / SCALE)
 	           ];
 	fixDef.shape.SetAsArray(point, point.length);
 	this.leftBody = world.CreateBody(bodyDef);
 	this.leftBody.CreateFixture(fixDef);
 	
-	point = [	new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (50) / SCALE),
-	         	new box2d.b2Vec2((canvasWidth*6/80) / SCALE, (50) / SCALE),
-	         	new box2d.b2Vec2((canvasWidth*6/80) / SCALE, (100) / SCALE),
-	         	new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (100) / SCALE)
+	point = [	new box2d.b2Vec2((canvasWidth/4+70) / SCALE, (177) / SCALE),
+	         	new box2d.b2Vec2((canvasWidth/4+100) / SCALE, (300) / SCALE),
+	         	new box2d.b2Vec2((canvasWidth/4) / SCALE, (325) / SCALE),
+	         	new box2d.b2Vec2((canvasWidth/4-40) / SCALE, (218) / SCALE)
     		];
 	fixDef.shape.SetAsArray(point, point.length);
 	this.leftBody.CreateFixture(fixDef);
 	//left one
 	
 	point = [
-	             new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (150) / SCALE),
-	             new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (225) / SCALE),
-	             new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (235) / SCALE),
-	             new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (160) / SCALE)	             
+	             new box2d.b2Vec2((canvasWidth/4) / SCALE, (325) / SCALE),
+	             new box2d.b2Vec2((canvasWidth) / SCALE, (138) / SCALE),
+	             new box2d.b2Vec2((canvasWidth) / SCALE, (158) / SCALE),
+	             new box2d.b2Vec2((canvasWidth/4) / SCALE, (345) / SCALE)	             
 	           ];
 	
 	fixDef.shape.SetAsArray(point, point.length);
@@ -203,48 +203,17 @@ StageInterface.prototype.initStage = function(obj){
 	this.rightBody.CreateFixture(fixDef);
 	
 	point = [
-				new box2d.b2Vec2((canvasWidth*1/16) / SCALE, (325) / SCALE),
-				new box2d.b2Vec2((canvasWidth) / SCALE, (250) / SCALE),
-				new box2d.b2Vec2((canvasWidth) / SCALE, (260) / SCALE),
-	         	new box2d.b2Vec2((canvasWidth*1/16) / SCALE, (335) / SCALE)
+				new box2d.b2Vec2((canvasWidth) / SCALE, (138) / SCALE),
+			    new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (154) / SCALE),
+			    new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (130) / SCALE),
+			    new box2d.b2Vec2((canvasWidth) / SCALE, (130) / SCALE)
 			];
 	fixDef.shape.SetAsArray(point, point.length);
 	this.rightBody.CreateFixture(fixDef);
 	
-	point = [
-             new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (350) / SCALE),
-             new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (425) / SCALE),
-             new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (435) / SCALE),
-             new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (360) / SCALE)	             
-           ];
-
-	fixDef.shape.SetAsArray(point, point.length);
-	this.rightBody = world.CreateBody(bodyDef);
-	this.rightBody.CreateFixture(fixDef);
-	
-	point = [
-				new box2d.b2Vec2((canvasWidth*1/16) / SCALE, (525) / SCALE),
-				new box2d.b2Vec2((canvasWidth) / SCALE, (450) / SCALE),
-				new box2d.b2Vec2((canvasWidth) / SCALE, (460) / SCALE),
-	         	new box2d.b2Vec2((canvasWidth*1/16) / SCALE, (535) / SCALE)
-			];
-	fixDef.shape.SetAsArray(point, point.length);
-	this.rightBody.CreateFixture(fixDef);
-		
-	
-	point = [
-	         new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (550) / SCALE),
-	         new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (625) / SCALE),
-	         new box2d.b2Vec2((canvasWidth*15/16) / SCALE, (635) / SCALE),
-	         new box2d.b2Vec2((canvasWidth*0/80) / SCALE, (560) / SCALE)	             
-	       ];
-	
-	fixDef.shape.SetAsArray(point, point.length);
-	this.rightBody = world.CreateBody(bodyDef);
-	this.rightBody.CreateFixture(fixDef);
 	//OTHER BRICKS..
 	
-	/*point = [
+	point = [
 				new box2d.b2Vec2((0) / SCALE, (400) / SCALE),
 			    new box2d.b2Vec2((canvasWidth) / SCALE, (500) / SCALE),
 			    new box2d.b2Vec2((canvasWidth) / SCALE, (canvasHeight-10) / SCALE),
@@ -263,7 +232,7 @@ StageInterface.prototype.initStage = function(obj){
 			];
 	fixDef.shape.SetAsArray(point, point.length);
 	this.rightBody.CreateFixture(fixDef);
-	*/
+	
 	
 	
 	
@@ -275,15 +244,14 @@ StageInterface.prototype.initStage = function(obj){
 	
 	var warmHoleBodyDef = new box2d.b2BodyDef();
 	warmHoleBodyDef.type = box2d.b2Body.b2_kinematicBody;
-	warmHoleBodyDef.position.Set(canvasWidth/2 / SCALE, (canvasHeight*-1) /SCALE);
+	warmHoleBodyDef.position.Set(50 / SCALE, (330)/SCALE);
 	
 	var warmHoleFixDef = new box2d.b2FixtureDef();
 	warmHoleFixDef.isSensor = true;
 	warmHoleFixDef.density = 0.4;
 	warmHoleFixDef.friction= 1.0;
-	warmHoleFixDef.shape = new box2d.b2PolygonShape();
-	
-	warmHoleFixDef.shape.SetAsBox(canvasWidth/2 /SCALE, canvasHeight/2 /SCALE);
+	warmHoleFixDef.shape = new box2d.b2CircleShape(50/SCALE);
+	warmHoleFixDef.shape.m_p.Set(50 / SCALE, 0 / SCALE);
 	
 	this.holes = [];
 	var i = 1;
@@ -291,7 +259,7 @@ StageInterface.prototype.initStage = function(obj){
 	this.holes[0] = world.CreateBody(warmHoleBodyDef);
 	this.holes[0].CreateFixture(warmHoleFixDef);
 	this.holes[0].SetUserData('hole0');
-	this.holes[0].SetLinearVelocity(new box2d.b2Vec2(0.0, 20/SCALE));
+	this.holes[0].SetAngularVelocity(-30 / SCALE );
 	
 	
 	var stoneBodyDef = new box2d.b2BodyDef();
@@ -301,12 +269,37 @@ StageInterface.prototype.initStage = function(obj){
 	stoneFixtureDef.density = 1.0;
 	stoneFixtureDef.friction = 1.0;
 	var tempStoneBody;
-//	for(i = 0; i < 40; i++){
-//		stoneBodyDef.position.Set((Math.random()*800+290) / SCALE, (Math.random()*20+325)/SCALE);
-//		tempStoneBody = world.CreateBody(stoneBodyDef);
-//		tempStoneBody.CreateFixture(stoneFixtureDef);
-//	}
-
+	this.stones = [];
+	for(i = 0; i < 40; i++){
+		stoneBodyDef.position.Set((Math.random()*800+290) / SCALE, (Math.random()*20+325)/SCALE);
+		tempStoneBody = world.CreateBody(stoneBodyDef);
+		tempStoneBody.CreateFixture(stoneFixtureDef);
+		this.stones[i] = tempStoneBody;
+	}
+	/*warmHoleBodyDef.position.Set((20)/SCALE, (canvasHeight-20)/SCALE);
+	this.holes[1] = world.CreateBody(warmHoleBodyDef);
+	this.holes[1].CreateFixture(warmHoleFixDef);
+	this.holes[1].SetUserData('hole'+i);
+	
+	for(i = 2; i < 6; i++){
+		warmHoleBodyDef.position.Set((canvasWidth/16 * ((i-1)*3))/SCALE, 390/SCALE);
+		this.holes[i] = world.CreateBody(warmHoleBodyDef);
+		this.holes[i].CreateFixture(warmHoleFixDef);
+		this.holes[i].SetUserData('hole'+i);
+	}
+	
+	var bodyDefWall = new box2d.b2BodyDef();
+	bodyDefWall.position.Set(900/SCALE, 200/SCALE);
+	bodyDefWall.type = box2d.b2Body.b2_kinematicBody;*/
+	
+	/*var fixDefWall = new box2d.b2FixtureDef();
+	fixDefWall.shape = new box2d.b2PolygonShape();
+	fixDefWall.shape.SetAsBox(5/SCALE, 100/SCALE);
+	
+	this.wallBody = world.CreateBody(bodyDefWall);
+	this.wallBody.CreateFixture(fixDefWall);
+	this.wallBody.SetAngularVelocity(70/SCALE);*/
+	
 	}//end block;
 	/******************************************************
 	 * 
@@ -317,7 +310,7 @@ StageInterface.prototype.initStage = function(obj){
 	
 	var holeBodyDef = new box2d.b2BodyDef();
 	holeBodyDef.position.x = (canvasWidth*39/40) / SCALE;
-	holeBodyDef.position.y = (630) / SCALE;
+	holeBodyDef.position.y = (500) / SCALE;
 	holeBodyDef.type = box2d.b2DynamicBody;
 	var holeFixDef = new box2d.b2FixtureDef();
 	holeFixDef.isSensor = true;
@@ -405,10 +398,13 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
-    
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background4")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
+	
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;
@@ -418,6 +414,15 @@ StageInterface.prototype.drawAll = function(obj){
 	flag.x = this.holeBody.GetPosition().x * SCALE - 5;
 	flag.y = this.holeBody.GetPosition().y * SCALE - 74;
 	stage.addChildAt(flag, 2);
+	
+	this.bubble = new createjs.Bitmap(loader.getResult("bubblestone"));
+	stage.addChild(this.bubble);
+	
+	this.stoneBmps = [];
+	for(i = 0; i < 40; i++){
+		this.stoneBmps[i] = new createjs.Bitmap(loader.getResult("gamestone"));
+		stage.addChild(this.stoneBmps[i]);
+	}
 }
 StageInterface.prototype.drawBall = function(obj){
 	var ball = obj.getChildAt(1);
@@ -431,6 +436,19 @@ StageInterface.prototype.step = function(obj){
 		this.isMoveTime = false;
 		//this.golfBall.SetPosition(new box2d.b2Vec2(this.arrayToMovePos.x/SCALE,this.arrayToMovePos.y/SCALE));
 		world.DestroyBody(this.rightBody);
+	}
+	
+	var angle = this.holes[0].GetAngle()*180/Math.PI%360;
+	if(this.bubble)
+		this.bubble.setTransform(50, 330, 1, 1, angle, 0, 0, 0, 50);
+	for(i = 0; i < 40; i++){
+		if(this.stoneBmps){
+			this.stoneBmps[i].setTransform(
+					this.stones[i].GetPosition().x * SCALE,
+					this.stones[i].GetPosition().y * SCALE,
+					0.8, 0.8, this.stones[i].GetAngle()*180/Math.PI%360, 0, 0, 15 ,15
+					);
+		}
 	}
 }
 

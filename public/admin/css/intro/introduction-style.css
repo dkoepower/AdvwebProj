@@ -1,0 +1,14 @@
+#section_wrapper {
+	background:url('../../../res/img/HowToPlay_Page.png') no-repeat center center;
+	background-size:contain;
+}
+
+#header_wrapper {
+	background:url('../../../res/img/HowToPlay_Main.jpg') no-repeat center center;
+	background-size:contain;
+}
+
+#footer_wrapper {
+	background:url('../../../res/img/HowToPlay_Foot.png') no-repeat center center;
+	background-size:contain;
+}

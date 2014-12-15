@@ -37,7 +37,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -251,10 +251,13 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
-    
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background1")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
+	
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;

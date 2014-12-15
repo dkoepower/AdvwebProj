@@ -48,6 +48,33 @@ function onloadedTask(){
                 { src: "../../../res/img/oncanvas/golfball.png", id: "golfball" },
                 { src: "../../../res/img/oncanvas/redflag.png", id: "flag" },
                 { src: "../../../res/스프라이트/이펙트/expolsive.png", id: "expl" },
+                { src: "../../../res/스프라이트/이펙트/animation_fire007loop.png", id: "portal" },
+                { src: "../../../res/스프라이트/이펙트/heal_001.png", id: "heal" },
+                { src: "../../../res/스프라이트/이펙트/L15_Burner_.png", id: "flyingFire" },
+                { src: "../../../res/스프라이트/이펙트/L41_Aero.png", id: "spiral1" },
+                { src: "../../../res/스프라이트/이펙트/L43_Mach_Five.png", id: "spiral2" },
+                { src: "../../../res/스프라이트/이펙트/L48_Healing.png", id: "spiral3" },
+                { src: "../../../res/스프라이트/이펙트/pa.png", id: "spiral4" },
+                { src: "../../../res/스프라이트/이펙트/L44_Gale.png", id: "spiral5" },
+                { src: "../../../res/img/oncanvas/stage4_rot.jpg", id: "bar" },
+                { src: "../../../res/img/oncanvas/game stone.png", id: "gamestone" },
+                { src: "../../../res/img/oncanvas/bubble.jpg", id: "bubblestone" },
+                { src: "../../../res/img/oncanvas/stg1.png", id: "background1" },
+                { src: "../../../res/img/oncanvas/stg2.png", id: "background2" },
+                { src: "../../../res/img/oncanvas/stg3.png", id: "background3" },
+                { src: "../../../res/img/oncanvas/stg4.jpg", id: "background4" },
+                { src: "../../../res/img/oncanvas/stg5.jpg", id: "background5" },
+                { src: "../../../res/img/oncanvas/stg6.jpg", id: "background6" },
+                { src: "../../../res/img/oncanvas/stg7.jpg", id: "background7" },
+                { src: "../../../res/img/oncanvas/propel.jpg", id: "propel" },
+                { src: "../../../res/img/oncanvas/magma.png", id: "magma" },
+                { src: "../../../res/스프라이트/이펙트/flame.png", id: "flame" },
+                { src: "../../../res/img/oncanvas/stg6_propel.jpg", id: "propel6" },
+                { src: "../../../res/img/oncanvas/stg6_bubble.jpg", id: "bubble6" },
+                { src: "../../../res/img/oncanvas/stg6_soul.jpg", id: "soul6" },
+                { src: "../../../res/img/oncanvas/stg6_11.jpg", id: "lever" },
+                { src: "../../../res/img/oncanvas/stg6_3.jpg", id: "pole" },
+                
 //                { src: "parallaxHill2.png", id: "hill2" }
             ];
 	 loader = new createjs.LoadQueue(false);
@@ -100,7 +127,7 @@ function updateBatchLayout(){
 
 var count = 20;
 var initCount = 1, drawOne = 1;
-var isDebugDrawOk = true;
+var isDebugDrawOk = false;
 function tickHandler(event){
 //	canInfo.stage.update();
 	if(!canInfo.isPause){
@@ -262,7 +289,7 @@ function createSprite(id, count, width, height, x, y, xscale, yscale){
         "images": [loader.getResult(id)],
         "frames": { "regX": width/2, "height": height, "count": 25, "regY": height/2, "width": width },
         // define two animations, run (loops, 1.5x speed) and jump (returns to run):
-        "animations": { "idle": [0, 24, "idle", xspeed]}   // jump후엔 run, run 후에 run(loop)
+        "animations": { "idle": [0, count-1, "idle", xspeed]}   // jump후엔 run, run 후에 run(loop)
     });
 	var data = new createjs.Sprite(spritedata, "idle");
 	data.x = x;
@@ -272,4 +299,5 @@ function createSprite(id, count, width, height, x, y, xscale, yscale){
 	
 	return data;
 }
+
 

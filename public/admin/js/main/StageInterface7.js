@@ -63,7 +63,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -366,6 +366,7 @@ StageInterface.prototype.initStage = function(obj){
 	j = 0;
 	
 	propelBody.SetAngularVelocity(30.0/SCALE);
+	this.propel = propelBody;
 	
 	/***
 	 * propel area end
@@ -411,10 +412,12 @@ StageInterface.prototype.initStage = function(obj){
 	stoneFixtureDef.density = 0.3;
 	stoneFixtureDef.friction = 1.0;
 	var tempStoneBody;
+	this.stones = [];
 	for(i = 0; i < 40; i++){
 		stoneBodyDef.position.Set((200+i*30)/SCALE, (325)/SCALE);
 		tempStoneBody = world.CreateBody(stoneBodyDef);
 		tempStoneBody.CreateFixture(stoneFixtureDef);
+		this.stones[i] = tempStoneBody;
 	}
 	
 	warmHoleBodyDef.position.Set((400)/SCALE, (400)/SCALE);
@@ -566,10 +569,14 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
     
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background6")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
+	
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;
@@ -579,6 +586,37 @@ StageInterface.prototype.drawAll = function(obj){
 	flag.x = this.holeBody.GetPosition().x * SCALE - 5;
 	flag.y = this.holeBody.GetPosition().y * SCALE - 74;
 	stage.addChildAt(flag, 2);
+	
+	this.bitmap = new createjs.Bitmap(loader.getResult("propel6"));
+	stage.addChild(this.bitmap);
+	
+	this.flame = createSprite('flame', 25, 96, 96, 777, 430, 1, 1.5);
+	stage.addChild(this.flame);
+	
+	this.soul1 = new createjs.Bitmap(loader.getResult("soul6"));
+	this.soul1.x = 390;
+	this.soul1.y = 390;
+	stage.addChild(this.soul1);
+	
+	this.soul2 = new createjs.Bitmap(loader.getResult("soul6"));
+	this.soul2.x = (canvasWidth*78/80)-10;
+	this.soul2.y = 340;
+	stage.addChild(this.soul2);
+	
+	this.heal = createSprite('heal', 25, 192, 192, canvasWidth*54/80, 590, 0.5, 0.5);
+	stage.addChild(this.heal);
+	
+	this.flyingFire = createSprite('flyingFire', 25, 192, 192, canvasWidth*54/80, 590, 0.5, 0.5);
+	stage.addChild(this.flyingFire);
+	
+	this.lever = new createjs.Bitmap(loader.getResult('lever'));
+	stage.addChild(this.lever);
+	
+	this.stoneBmp = [];
+	for(i = 0; i < 40; i++){
+		this.stoneBmp[i] = new createjs.Bitmap(loader.getResult('pole'));
+		stage.addChild(this.stoneBmp[i]);
+	}
 }
 StageInterface.prototype.drawBall = function(obj){
 	var ball = obj.getChildAt(1);
@@ -592,6 +630,28 @@ StageInterface.prototype.step = function(obj){
 		this.isMoveTime = false;
 		this.golfBall.SetPosition(new box2d.b2Vec2(this.arrayToMovePos.x/SCALE,this.arrayToMovePos.y/SCALE));
 //		world.DestroyBody(this.rightBody);
+	}
+	
+	var angle = stgInterface.propel.GetAngle()*180/Math.PI%360;
+	if(this.bitmap)
+		this.bitmap.setTransform(canvasWidth/2, (50), 1, 1, angle-90, 0, 0, 100, 100);
+	var angleOfLever = this.leftBody.GetAngle()*180/Math.PI%360;
+	if(this.lever)
+		this.lever.setTransform(
+				this.leftBody.GetPosition().x * SCALE,
+				this.leftBody.GetPosition().y * SCALE,
+				1, -1, this.leftBody.GetAngle()*180/Math.PI%360-180, 0, 0, -5 ,10
+				);
+	if(this.stoneBmp){
+		for(i = 0; i < 40; i++){
+//			stoneBodyDef.position.Set((200+i*30)/SCALE, (325)/SCALE);
+			this.stoneBmp[i].setTransform(
+					this.stones[i].GetPosition().x * SCALE,
+					this.stones[i].GetPosition().y * SCALE,
+					1, 1, this.stones[i].GetAngle()*180/Math.PI%360-180, 0, 0, 5 ,60
+					);
+		}
+		
 	}
 }
 

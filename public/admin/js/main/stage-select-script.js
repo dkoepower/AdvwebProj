@@ -21,6 +21,26 @@ function onloadedTask(){
 			}
 		});
 		
+		if(!localStorage.getItem("enroll")){
+			var name = prompt("사용자 등록!", "기록을 위해 이름를 입력하세요.");
+			if(name == null){
+				alert("등록 실패");
+				localStorage.removeItem("enroll", 'none');
+			} else {
+				localStorage.setItem("enroll", name);
+				$.ajax({
+					url:'http://advancedwebprogramming.azurewebsites.net/registerUser.do',
+					data:{
+						name:name
+					},
+					method:'POST',
+					success:function(data){
+						console.log(data);
+					}
+				});
+			}
+		}
+		
 	}
 	
 	$('.left-bottom').on('click', function(e){

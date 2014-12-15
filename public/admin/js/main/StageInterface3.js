@@ -39,7 +39,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -251,6 +251,7 @@ StageInterface.prototype.initStage = function(obj){
 	j = 0;
 	
 	propelBody.SetAngularVelocity(30.0/SCALE);
+	this.propel = propelBody;
 	
 	
 	}
@@ -351,19 +352,26 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background2")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
     
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;
 	stage.addChildAt(ball, 1);
-	
+
 	var flag = new createjs.Bitmap(loader.getResult("flag"));
 	flag.x = this.holeBody.GetPosition().x * SCALE - 5;
 	flag.y = this.holeBody.GetPosition().y * SCALE - 74;
 	stage.addChildAt(flag, 2);
+	
+	this.bitmap = new createjs.Bitmap(loader.getResult("propel"));
+	stage.addChild(this.bitmap);
+//	canInfo.effectCanvas.stage.addChild(this.bitmap);
 }
 StageInterface.prototype.drawBall = function(obj){
 	var ball = obj.getChildAt(1);
@@ -373,7 +381,12 @@ StageInterface.prototype.drawBall = function(obj){
 	}
 }
 StageInterface.prototype.step = function(obj){
-	
+	var angle = stgInterface.propel.GetAngle()*180/Math.PI%360;
+	var stage = canInfo.effectCanvas.stage;
+//	var bitmap = stage.getChild(this.bitmap);
+//	console.log(bitmap);
+	if(this.bitmap)
+		this.bitmap.setTransform(canvasWidth/2, canvasHeight/2, 1, 1, angle, 0, 0, 100, 100);
 }
 
 

@@ -59,7 +59,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -350,10 +350,14 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
     
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background3")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
+	
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;
@@ -363,6 +367,21 @@ StageInterface.prototype.drawAll = function(obj){
 	flag.x = this.holeBody.GetPosition().x * SCALE - 5;
 	flag.y = this.holeBody.GetPosition().y * SCALE - 74;
 	stage.addChildAt(flag, 2);
+	
+	this.bitmap = [];
+	this.bitmap[0] = createSprite("portal", 35, 192, 192, 300, canvasHeight-20, 0.1, 0.1);
+	stage.addChild(this.bitmap[0]);
+	
+	this.bitmap[1] = createSprite("portal", 35, 192, 192, 20, canvasHeight-20, 0.1, 0.1);
+	stage.addChild(this.bitmap[1]);
+	
+	for(i = 2; i < 6; i++){
+		this.bitmap[i] = createSprite("portal", 35, 192, 192, (canvasWidth/16 * ((i-1)*3)), 390, 0.1, 0.1);
+		stage.addChild(this.bitmap[i]);
+	}
+	
+	this.bar = new createjs.Bitmap(loader.getResult("bar"));
+	stage.addChild(this.bar);
 }
 StageInterface.prototype.drawBall = function(obj){
 	var ball = obj.getChildAt(1);
@@ -376,6 +395,10 @@ StageInterface.prototype.step = function(obj){
 		this.isMoveTime = false;
 		this.golfBall.SetPosition(new box2d.b2Vec2(this.arrayToMovePos.x/SCALE,this.arrayToMovePos.y/SCALE));
 	}
+	
+	var angle = this.wallBody.GetAngle()*180/Math.PI%360;
+	if(this.bar)
+		this.bar.setTransform(900, 200, 1, 1, angle, 0, 0, 6, 125);
 }
 
 return StageInterface;

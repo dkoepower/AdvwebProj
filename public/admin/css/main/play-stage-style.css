@@ -24,11 +24,29 @@
 
 .interface-group > li {
 	float:left;
-	border:1px solid black;
+	/* border:1px solid black; */
 	width:50px;
 	height:50px;
 	margin:2px;
 	cursor:pointer;
+}
+
+.interface-group > li:hover {
+	background-color:white;
+}
+
+.interface-group .restart {
+	background:url('../../../res/img/oncanvas/re_btn.png') no-repeat center center;
+	background-size:contain;
+}
+.interface-group .menu-exit {
+	background:url('../../../res/img/oncanvas/menu_btn.png') no-repeat center center;
+	background-size:contain;
+}
+
+.interface-group .pause {
+	background:url('../../../res/img/oncanvas/pause_btn.png') no-repeat center center;
+	background-size:contain;
 }
 
 .gameview-container .canvas-container {

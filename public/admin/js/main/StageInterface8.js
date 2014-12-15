@@ -59,7 +59,7 @@ function StageInterface(object) {
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
-							name:'test2',
+							name:localStorage.getItem("enroll"),
 							record:window.starteMilliSeconds - window.endMilliSeconds,
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
@@ -549,10 +549,13 @@ StageInterface.prototype.drawAll = function(obj){
 	//obj is stage.
 	var stage = obj;
 	
-	var grass = new createjs.Shape();
-	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
-    stage.addChildAt(grass, 0);
-    
+//	var grass = new createjs.Shape();
+//	grass.graphics.beginBitmapFill(loader.getResult("grass")).drawRect(0, 500, 1000, 200);
+//    stage.addChildAt(grass, 0);
+	var background = new createjs.Shape();
+	background.graphics.beginBitmapFill(loader.getResult("background7")).drawRect(0, 0, 1000, 645);
+	stage.addChildAt(background, 0);
+	
     var ball = new createjs.Bitmap(loader.getResult("golfball"));
 	ball.x = this.golfBall.GetPosition().x * SCALE -6;
 	ball.y = this.golfBall.GetPosition().y * SCALE -6;
@@ -562,6 +565,15 @@ StageInterface.prototype.drawAll = function(obj){
 	flag.x = this.holeBody.GetPosition().x * SCALE - 5;
 	flag.y = this.holeBody.GetPosition().y * SCALE - 74;
 	stage.addChildAt(flag, 2);
+	
+	var spiral = createSprite('spiral1', 25, 192, 192, 400, 400, 1, 1);
+	stage.addChild(spiral);
+	stage.addChild(createSprite('spiral2', 20, 192, 192, 800, 200, 1, 1));
+	stage.addChild(createSprite('spiral3', 25, 192, 192, 200, 200, 1, 1));
+	stage.addChild(createSprite('spiral4', 30, 192, 192, canvasWidth*39/40, 130, 1, 1));
+	stage.addChild(createSprite('spiral5', 30, 192, 192, canvasWidth*20/40, 450, 1.5, 1.5));
+	stage.addChild(createSprite('spiral5', 30, 192, 192, canvasWidth*25/40, 500, 2.5, 2.5));
+	stage.addChild(createSprite('spiral5', 30, 192, 192, canvasWidth*30/40, 550, 1.5, 1.5));
 }
 StageInterface.prototype.drawBall = function(obj){
 	var ball = obj.getChildAt(1);
