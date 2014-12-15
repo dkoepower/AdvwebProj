@@ -62,7 +62,7 @@ function StageInterface(object) {
 						  
 						    var output = '';
 						  	$.each(data, function(i, e, a){
-						  		output += i+' 순위 : ' + e.s_u_name +', time : ' + e.s_record;
+						  		output += i+' 순위 : ' + e.s_u_name +', time : ' + e.s_record + '\n';
 						  	});
 						  	
 						  	alert(output);
