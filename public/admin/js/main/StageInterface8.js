@@ -56,11 +56,24 @@ function StageInterface(object) {
 					setMessageBoxMessage("단계를 클리어하셨습니다. 모두 클리어했군요.", "축하합니다.");
 					window.endMilliSeconds = new Date().getTime();
 					$.ajax({
+						  url:'http://advancedwebprogramming.azurewebsites.net/ranking.do',
+						  method:'GET',
+						  success: function(data) { console.log(data);
+						  
+						    var output = '';
+						  	$.each(data, function(i, e, a){
+						  		output += i+' 순위 : ' + e.s_u_name +', time : ' + e.s_record;
+						  	});
+						  	
+						  	alert(output);
+						  }
+						});
+					$.ajax({
 						url: 'http://advancedwebprogramming.azurewebsites.net/finishStage.do',
 						method:'POST',
 						data : {
 							name:localStorage.getItem("enroll"),
-							record:window.starteMilliSeconds - window.endMilliSeconds,
+							record:-(window.starteMilliSeconds - window.endMilliSeconds),
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
 						success:function(data){

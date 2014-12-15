@@ -21,7 +21,7 @@ function onloadedTask(){
 			}
 		});
 		
-		if(!localStorage.getItem("enroll")){
+		if(!localStorage.getItem("enroll") || localStorage.getItem("enroll") == 'none'){
 			var name = prompt("사용자 등록!", "기록을 위해 이름를 입력하세요.");
 			if(name == null){
 				alert("등록 실패");

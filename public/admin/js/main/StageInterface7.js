@@ -64,7 +64,7 @@ function StageInterface(object) {
 						method:'POST',
 						data : {
 							name:localStorage.getItem("enroll"),
-							record:window.starteMilliSeconds - window.endMilliSeconds,
+							record:-(window.starteMilliSeconds - window.endMilliSeconds),
 							stage:parseInt(location.search.substring(1).split('=')[1])
 						},
 						success:function(data){
