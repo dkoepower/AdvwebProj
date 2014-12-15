@@ -214,6 +214,7 @@ function tickHandler(event){
 }
 
 function initCanvas(){
+	localStorage.setItem('local', true);
 	starteMilliSeconds = new Date().getTime();
 	world = new box2d.b2World(new box2d.b2Vec2(0, 50), true);
 	canInfo = new CanvasInfoContainer($('#playcanvas')[0],
